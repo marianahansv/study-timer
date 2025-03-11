@@ -11,7 +11,6 @@ const formatTime = (time) => {
 
 function Timer() {
     const [time, setTime] = useState(25*60); // 25 minutes in seconds
-    const [readyToStudy, setReadyToStudy] = useState(false);
     const [isPaused, setIsPaused] = useState(true);
 
     useEffect(() => {
@@ -37,7 +36,7 @@ function Timer() {
     //my visuals
     return (
       <div>
-        <h2>set your study time!</h2>
+        <h2>set your time!</h2>
         <>
           <div>
             <h1>{formatTime(time)}</h1>

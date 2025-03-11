@@ -5,7 +5,7 @@ import SpotifyPlayer from './components/SpotifyPlayer';
 function App() {
   return (
     <div className="App">
-      <h1>cozy study room</h1>
+      <h1>your study room to lock in</h1>
       <Timer />
       <SpotifyPlayer />
     </div>
