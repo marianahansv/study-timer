@@ -32,15 +32,15 @@ function Timer() {
     const handleStartandPause = () => {setIsPaused(!isPaused);};
     const handleReset = () => {setTime(25*60); setIsPaused(true);};
     const handleIncrease = () => {setTime(time + 5*60);}; //add 5 minutes every increase
-    const handleDecrease = () => {setTime(time - 5*60);}; //subtract 5 minutes every decrease
+    const handleDecrease = () => {time - (5*60) >= 0 ? setTime(time - 5*60) : setTime(0);}; //subtract 5 minutes every decrease
     
     //my visuals
     return (
       <div>
-        <h2>Set your study time!</h2>
+        <h2>set your study time!</h2>
         <>
           <div>
-            <p>{formatTime(time)}</p>
+            <h1>{formatTime(time)}</h1>
             <> {isPaused ? 
               <>
                 <button onClick={handleIncrease}>+</button>
@@ -49,8 +49,8 @@ function Timer() {
             </>
           </div>
           <button onClick={handleStartandPause}>
-            {isPaused ? "Start": "Pause"}</button>
-          <button onClick={handleReset}>Reset</button>
+            {isPaused ? "start": "stop"}</button>
+          <button onClick={handleReset}>reset</button>
         </>
       </div>
     );
