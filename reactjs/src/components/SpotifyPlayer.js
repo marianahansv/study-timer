@@ -14,7 +14,7 @@ function SpotifyPlayer(){
     return (
       <div>
         <div>
-          <h1>pick your playlist!</h1>
+          <p>pick your playlist!</p>
           <select onChange={(e) => setPlaylist(e.target.value)}>
             {Object.keys(playlistsIds).map((name) => (
               <option key={name} value={name}>{name}</option>
