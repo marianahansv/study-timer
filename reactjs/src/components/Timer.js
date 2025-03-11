@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './../App.css'
 // format time to display as HH:MM:SS
 // Note: time is in seconds
 const formatTime = (time) => { 
@@ -37,20 +37,16 @@ function Timer() {
     return (
       <div>
         <h2>set your time!</h2>
-        <>
-          <div>
-            <h1>{formatTime(time)}</h1>
-            <> {isPaused ? 
-              <>
-                <button onClick={handleIncrease}>+</button>
-                <button onClick={handleDecrease}>-</button>
-                </> : null}
-            </>
+          <div className='timer-container'>
+            {isPaused ? <button className="time-control" onClick={handleDecrease}>-</button> : null}
+            <h1 className='timer-display'>{formatTime(time)}</h1>
+            {isPaused ? <button className="time-control" onClick={handleIncrease}>+</button>: null}
           </div>
+          <div className='timer-control-buttons'>
           <button onClick={handleStartandPause}>
-            {isPaused ? "start": "stop"}</button>
-          <button onClick={handleReset}>reset</button>
-        </>
+              {isPaused ? "start": "stop"}</button>
+              <button onClick={handleReset}>reset</button>
+          </div>
       </div>
     );
   }
