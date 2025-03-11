@@ -1,13 +1,13 @@
 import './App.css';
 import Timer from './components/Timer';
-import MusicPlayer from './components/MusicPlayer';
+import SpotifyPlayer from './components/SpotifyPlayer';
 
 function App() {
   return (
     <div className="App">
       <h1>cozy study room</h1>
       <Timer />
-      <MusicPlayer />
+      <SpotifyPlayer />
     </div>
   );
 }
