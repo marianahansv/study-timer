@@ -38,11 +38,14 @@ function Timer() {
       <div>
         <h2>set your time!</h2>
           <div className='timer-container'>
-            {isPaused ? <button className="time-control" onClick={handleDecrease}>-</button> : null}
-            <h1 className='timer-display'>{formatTime(time)}</h1>
-            {isPaused ? <button className="time-control" onClick={handleIncrease}>+</button>: null}
+          <h1 className='timer-display'>{formatTime(time)}</h1>
+          <div className='timer-controls'>
+            {isPaused ? <button className='control-button' onClick={handleIncrease}>+</button> : null}
+            {isPaused ? <button className='control-button' onClick={handleDecrease}>-</button>: null}
+            </div>
           </div>
-          <div className='timer-control-buttons'>
+
+          <div className='timer-buttons'>
           <button onClick={handleStartandPause}>
               {isPaused ? "start": "stop"}</button>
               <button onClick={handleReset}>reset</button>
