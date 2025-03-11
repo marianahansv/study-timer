@@ -1,4 +1,7 @@
 import './App.css';
+import Timer from './components/Timer';
+import BackgroundSelector from './components/BackgroundSelector';
+import MusicPlayer from './components/MusicPlayer';
 
 function App() {
   return (
