@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './../App.css'
 
 const playlistsIds ={
   "chill vibes" : "1gVVXE5aOUgYHbv6RdzzOC?si=f7f28804cbb74b75" ,
@@ -12,9 +13,9 @@ function SpotifyPlayer(){
     const [playlist, setPlaylist] = useState("chill vibes");
 
     return (
-      <div>
-        <div>
-          <p>pick your playlist!</p>
+      <div className='spotify-container'>
+        <p>pick your playlist!</p>
+        <div className='playlist-selector'>
           <select onChange={(e) => setPlaylist(e.target.value)}>
             {Object.keys(playlistsIds).map((name) => (
               <option key={name} value={name}>{name}</option>

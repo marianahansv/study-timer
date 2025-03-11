@@ -36,7 +36,6 @@ function Timer() {
     //my visuals
     return (
       <div>
-        <h2>set your time!</h2>
           <div className='timer-container'>
           <h1 className='timer-display'>{formatTime(time)}</h1>
           <div className='timer-controls'>
