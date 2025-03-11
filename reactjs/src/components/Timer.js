@@ -11,33 +11,49 @@ const formatTime = (time) => {
 
 function Timer() {
     const [time, setTime] = useState(25*60); // 25 minutes in seconds
-    const readyToStudy = false;
+    const [readyToStudy, setReadyToStudy] = useState(false);
+    const [isPaused, setIsPaused] = useState(true);
 
     useEffect(() => {
+      let timer;
       if (time === 0) {
-        // play sound
-        // show notification
-        // reset timer
+        // play bell sound 
+        return;
       }
-      const timer = setInterval(() => {
+      if (!isPaused){
+        timer = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
-      }, 1000); // decrement time every second
-      
+        }, 1000); // decrement time every second
+      }
       return () => clearInterval(timer); // cleanup timer to avoid memory leak aka remove prev timer before starting new one
-    }, [time]);
+    }, [isPaused, time]); //changes every time time or isPaused changes
 
+    //handlers for button actions
+    const handleStartandPause = () => {setIsPaused(!isPaused);};
+    const handleReset = () => {setTime(25*60); setIsPaused(true);};
+    const handleIncrease = () => {setTime(time + 5*60);}; //add 5 minutes every increase
+    const handleDecrease = () => {setTime(time - 5*60);}; //subtract 5 minutes every decrease
+    
+    //my visuals
     return (
       <div>
         <h2>Set your study time!</h2>
         <>
-          <p>{formatTime(time)}</p>
-
-          <button>Start</button>
-          <button>Pause</button>
-          <button>Reset</button>
+          <div>
+            <p>{formatTime(time)}</p>
+            <> {isPaused ? 
+              <>
+                <button onClick={handleIncrease}>+</button>
+                <button onClick={handleDecrease}>-</button>
+                </> : null}
+            </>
+          </div>
+          <button onClick={handleStartandPause}>
+            {isPaused ? "Start": "Pause"}</button>
+          <button onClick={handleReset}>Reset</button>
         </>
       </div>
     );
   }
-  
+
 export default Timer;
