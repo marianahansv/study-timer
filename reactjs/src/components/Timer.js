@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Box, Typography, Button } from '@mui/material';
 import './../App.css'
 // format time to display as HH:MM:SS
 // Note: time is in seconds
@@ -35,21 +36,42 @@ function Timer() {
     
     //my visuals
     return (
-      <div>
-          <div className='timer-container'>
-          <h1 className='timer-display'>{formatTime(time)}</h1>
-          <div className='timer-controls'>
-            {isPaused ? <button className='control-button' onClick={handleIncrease}>+</button> : null}
-            {isPaused ? <button className='control-button' onClick={handleDecrease}>-</button>: null}
-            </div>
-          </div>
+      <Box 
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "30vh",
+          backgroundColor: "#white",
+          gap: 3
+        }}
+      >
+        {/* Timer Display */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2, backgroundColor:"white"}}>
+        <Typography variant="h2" sx={{ fontWeight:"bold",fontSize: "9rem" }}>
+            {formatTime(time)}
+          </Typography>
+          {/* Timer Buttons + and - */}
+          <Box sx={{ display: "flex", flexDirection:"column", gap: 1, backgroundColor:"white" }}>
+          {isPaused && (
+            <Button variant="contained" onClick={handleIncrease} sx={{ fontSize: "2rem" }}>+</Button>
+          )}
+          {isPaused && (
+            <Button variant="contained" onClick={handleDecrease} sx={{ fontSize: "2rem" }}>-</Button>
+          )}</Box>
+        </Box>
 
-          <div className='timer-buttons'>
-          <button onClick={handleStartandPause}>
-              {isPaused ? "start": "stop"}</button>
-              <button onClick={handleReset}>reset</button>
-          </div>
-      </div>
+        {/* Timer Controls */}
+        <Box sx={{ display: "flex", gap: 2}}>
+          <Button variant="contained" color="primary" onClick={handleStartandPause} sx={{textTransform:"none", fontSize: "1.3rem"}}>
+            {isPaused ? "start" : "stop"}
+          </Button>
+          <Button variant="outlined" color="secondary" onClick={handleReset} sx={{textTransform:"none", fontSize: "1.3rem"}}>
+            reset
+          </Button>
+        </Box>
+      </Box>
     );
   }
 

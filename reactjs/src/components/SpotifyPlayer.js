@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './../App.css'
+import { Box, Typography, Select, MenuItem, FormControl } from "@mui/material";
 
 const playlistsIds ={
   "chill vibes" : "1gVVXE5aOUgYHbv6RdzzOC?si=f7f28804cbb74b75" ,
@@ -13,19 +14,52 @@ function SpotifyPlayer(){
     const [playlist, setPlaylist] = useState("chill vibes");
 
     return (
-      <div className='spotify-container'>
-        <p>pick your playlist!</p>
-        <div className='playlist-selector'>
-          <select onChange={(e) => setPlaylist(e.target.value)}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 2,
+          backgroundColor: "white",
+          padding: "20px",
+          borderRadius: "10px",
+          width: "fit-content",
+          margin: "auto",
+          marginTop: 3
+        }}
+      >
+        <Typography variant="h6" fontWeight="bold">
+          choose your playlist!
+        </Typography>
+        <FormControl sx={{ minWidth: 100}}>
+          <Select
+            value={playlist}
+            onChange={(e) => setPlaylist(e.target.value)}
+            displayEmpty
+            variant="outlined"
+            sx={{ fontWeight: "bold",
+                  height: "30px",  
+            }}
+          >
             {Object.keys(playlistsIds).map((name) => (
-              <option key={name} value={name}>{name}</option>
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
             ))}
-          </select>
-        </div>
-      <iframe 
+          </Select>
+        </FormControl>
+  
+        <Box
+          component="iframe"
           src={`https://open.spotify.com/embed/playlist/${playlistsIds[playlist]}`}
-          width="300" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      </div>
+          sx={{
+            width: "300px",
+            height: "200px",
+            border: "none",
+            borderRadius: "10px",
+          }}
+        />
+      </Box>
     );
   }
 export default SpotifyPlayer;
