@@ -22,6 +22,7 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://marianahansv.github.io/study-timer/",
   "eslintConfig": {
     "extends": [
       "react-app",
