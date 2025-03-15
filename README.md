@@ -1,4 +1,4 @@
-# Study Timer Web App
+# Study Timer!
 
 A simple study timer web application built with React.js and styled with Material UI. This timer helps you stay focused during study sessions by providing a clear countdown and the ability to adjust the timer duration.
 
