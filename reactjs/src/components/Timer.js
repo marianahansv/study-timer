@@ -60,12 +60,8 @@ function Timer() {
           </Typography>
           {/* Timer Buttons + and - */}
           <Box sx={{ display: "flex", flexDirection:"column", gap: 1 }}>
-            {isPaused && (
-              <Button variant="contained" onClick={handleIncrease} sx={{ fontSize: "2rem", backgroundColor: "#ff85a2", borderRadius: "50px" }}>➕</Button>
-            )}
-            {isPaused && (
-              <Button variant="contained" onClick={handleDecrease} sx={{ fontSize: "2rem", backgroundColor: "#ff85a2", borderRadius: "50px" }}>➖</Button>
-            )}
+              <Button variant="contained" onClick={handleIncrease} disabled={!isPaused} sx={{ fontSize: "2rem", backgroundColor: "#ff85a2", borderRadius: "50px",  }}>➕</Button>
+              <Button variant="contained" onClick={handleDecrease} disabled={!isPaused} sx={{ fontSize: "2rem", backgroundColor: "#ff85a2", borderRadius: "50px" }}>➖</Button>
           </Box>
         </Box>
 
